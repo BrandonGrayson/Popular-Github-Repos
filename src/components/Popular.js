@@ -1,6 +1,5 @@
 import React from "react";
 import Proptypes from "prop-types"
-import "react-dom";
 
 function LanguagesNav({selected, onUpdateLanguage}) {
     const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"]
