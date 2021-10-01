@@ -185,7 +185,6 @@ function Instructions () {
                 >Battle
                 </button>
             )}
-
           </div>
         </React.Fragment>
       )
