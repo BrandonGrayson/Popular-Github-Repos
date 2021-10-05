@@ -144,7 +144,14 @@ function Instructions () {
       const { playerOne, playerTwo, battle } = this.state
 
       if (battle === true) {
-          return <Results playerOne={playerOne} playerTwo={playerTwo} />
+          return <Results 
+            playerOne={playerOne} 
+            playerTwo={playerTwo} 
+            onReset={() => this.setState({
+              playerOne: null,
+              playerTwo: null,
+              battle: false
+          })}/>
       }
   
       return (
@@ -161,7 +168,11 @@ function Instructions () {
                   onSubmit={(player) => this.handleSubmit('playerOne', player)}
                 />
                 :
-                <PlayerPreview username={playerOne} label="Player One" onReset={() => this.handleReset("playerOne")}/>
+                <PlayerPreview
+                 username={playerOne} 
+                 label="Player One" 
+                 onReset={() => this.handleReset("playerOne")}
+                 />
               }
   
               {playerTwo === null
