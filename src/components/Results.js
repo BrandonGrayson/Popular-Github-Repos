@@ -4,6 +4,7 @@ import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from '
 import Card from "./Card"
 import Proptypes from "prop-types"
 import Loading from "./Loading"
+import Tooltip from "./Tooltip"
 
 const styles = {
   container: {
@@ -28,61 +29,27 @@ const styles = {
 }
 
 
-class ProfileList extends React.Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      hoveringLocation: false,
-      hoveringCompany: false
-    }
-    this.mouseOver = this.mouseOver.bind(this)
-    this.mouseOut = this.mouseOut.bind(this)
-  }
-
-  mouseOver(id) {
-    this.setState({
-      [id]: true
-    })
-  }
-
-  mouseOut(id) {
-    this.setState({
-      [id]: false
-    })
-  }
-
-  render () {
-
-    const { profile } = this.props
-    const { hoveringLocation, hoveringCompany} = this.state
-    return (
-      <ul className='card-list'>
+function ProfileList ({ profile }) {
+  return (
+    <ul className='card-list'>
       <li>
         <FaUser color='rgb(239, 115, 115)' size={22} />
         {profile.name}
       </li>
       {profile.location && (
-        <li 
-         onMouseOver={() => this.mouseOver('hoveringLocation')}
-         onMouseOut={() => this.mouseOut('hoveringLocation')}
-         style={styles.container}
-         >
-          {hoveringLocation === true && <div style={styles.tooltip}>Users Location</div>}
-          <FaCompass color='rgb(144, 115, 255)' size={22} />
-          {profile.location}
+        <li>
+          <Tooltip text="User's location">
+            <FaCompass color='rgb(144, 115, 255)' size={22} />
+            {profile.location}
+          </Tooltip>
         </li>
       )}
       {profile.company && (
-        <li
-         onMouseOver={() => this.mouseOver('hoveringCompany')}
-         onMouseOut={() => this.mouseOut('hoveringCompany')}
-         style={styles.container}
-         >
-          { hoveringCompany === true && <div style={styles.tooltip}>Users Company</div>}
-          <FaBriefcase color='#795548' size={22} />
-          {profile.company}
+        <li>
+          <Tooltip text="User's company">
+            <FaBriefcase color='#795548' size={22} />
+            {profile.company}
+          </Tooltip>
         </li>
       )}
       <li>
@@ -94,8 +61,7 @@ class ProfileList extends React.Component {
         {profile.following.toLocaleString()} following
       </li>
     </ul>
-    )
-  }
+  )
 }
 
 ProfileList.protoTypes = {
