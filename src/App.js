@@ -22,6 +22,7 @@ class App extends React.Component {
     }
   }
   render() {
+    const name = ''
     return (
       <Router>
         <ThemeProvider value={this.state}>
