@@ -20,6 +20,16 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "babel": {
+    "presents": [
+      "@babel/present-emv",
+      "@babel/present-react"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -37,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5"
   }
 }
