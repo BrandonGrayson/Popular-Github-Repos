@@ -32,7 +32,6 @@ export default class Loading extends React.Component{
     }
 
     render() {
-        const {text, speed} = this.props
         return (
         <p style={styles.content}>
             {this.state.content}
