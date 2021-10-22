@@ -7,7 +7,7 @@ import { ThemeProvider } from "../src/contexts/theme"
 import Nav from "./components/Nav"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Results from "./components/Results"
-import HopeWorks from "./components/Hopeworks"
+import HopeWorks from "./components/HopeWorks"
 
 class App extends React.Component {
 
