@@ -14,6 +14,12 @@ In this section I'll take you through the pre requisites to get this application
 2) Next you'll need to install Node JS -----> NodeJS link: https://nodejs.org/en/
 3) Check to make sure Node installed correctly -----> Run node -v and npm -v from your terminal. If you see a version number returned in your terminal you're ready to clone this repository.
 
+### Using Git and Github
+In order to clone the repo and make your first contribution you'll need to watch 2 videos on using Git a versioning software that allows you to track your project, and Github a place to store your projects and collaborate with other developers.
+
+Git Setup Link -----> A video by Colt Steele: https://www.youtube.com/watch?v=USjZcfj8yxE
+Github Setup Link -----> A Video by Colt Steele: https://www.youtube.com/watch?v=nhNq2kIvi9s&t=253s
+
 ### Clone the Repo
 1) Create a folder on your local desktop machine to store code in.
 2) copy and paste git clone link from github.
