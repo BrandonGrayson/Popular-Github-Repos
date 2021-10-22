@@ -29,6 +29,14 @@ export default function Nav() {
                                 >Battle
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                to='/hopeworks'
+                                className='nav-link'
+                                activeStyle={activeStyle}
+                                >HopeWorks
+                            </NavLink>
+                        </li>
                     </ul>
                     <button
                         style={{ fontSize: 30 }}
