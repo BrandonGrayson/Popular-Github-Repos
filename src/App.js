@@ -7,7 +7,7 @@ import { ThemeProvider } from "../src/contexts/theme"
 import Nav from "./components/Nav"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Results from "./components/Results"
-import HopeWorks from "./components/HopeWorks"
+import HopeWorks from "./components/Hopeworks"
 
 class App extends React.Component {
 
@@ -29,7 +29,7 @@ class App extends React.Component {
               <Switch>
                 <Route exact path='/' component={Popular}></Route>
                 <Route exact path='/battle' component={Battle}></Route>
-                <Route exact path='/hopeworks'>{HopeWorks}</Route>
+                <Route exact path='/hopeworks' component={HopeWorks}></Route>
                 <Route path='/battle/results' component={Results}></Route>
                 <Route render={() => <h1>404 Page</h1>} />
               </Switch>

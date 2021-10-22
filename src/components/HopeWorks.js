@@ -1,18 +1,17 @@
 import React from "react"
 
-export default class HopeWorks extends React.Component{
+export default class HopeWorks extends React.Component {
     constructor(props) {
-        super(props)
-
+        super(props) 
+        
         this.state = {
             name: 'Brandon'
         }
     }
 
     render() {
-
         return (
-        <h1>Enter a Todo List {this.state.name}</h1>
+        <h1>Hello {this.state.name}</h1>
         )
     }
 }
