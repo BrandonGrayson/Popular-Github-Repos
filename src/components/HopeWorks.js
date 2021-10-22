@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react"
 import React from "react"
 
 export default class HopeWorks extends React.Component{
@@ -11,6 +10,7 @@ export default class HopeWorks extends React.Component{
     }
 
     render() {
+
         return (
         <h1>Enter a Todo List {this.state.name}</h1>
         )
