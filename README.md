@@ -43,5 +43,9 @@ This section will take you through the process of adding your first React Compon
 11) Display all current todos in the HopeWorks Component
 
 
+### Having Trouble?
+Feel Free to reach out to me if you have any problems with this set up process. The first time can be tricky but once you get the hang of Git and Github you'll see these tools are impossible to live without. The easiest way to reach me is through LinkedIn https://www.linkedin.com/in/brandon-grayson-858032152/ send me a dm and I'll get back to you ASAP. If needed we can always jump on a zoom call or google meet.
+
+
 ### Links
 https://gracious-hermann-cd989f.netlify.app
