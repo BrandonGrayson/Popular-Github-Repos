@@ -1,7 +1,7 @@
 import React from "react"
 import { FaUserFriends, FaFighterJet, FaTrophy, FaTimesCircle } from 'react-icons/fa'
 import PropTypes from "prop-types"
-import { ThemeConsumer } from "../contexts/theme"
+import ThemeContext, { ThemeConsumer } from "../contexts/theme"
 import { Link } from "react-router-dom"
 
 
@@ -34,85 +34,69 @@ function Instructions() {
   )
 }
 
-class PlayerInput extends React.Component {
+function PlayerInput({ onSubmit, label }) {
+  const [username, setUserName] = React.useState('')
 
- state = {
-   username: ''
- }
+  const handleSubmit = (e) => {
+    e.preventDefault()
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-
-    this.props.onSubmit(this.state.username)
+    onSubmit(username)
   }
 
-  handleChange = (event) => {
-    this.setState({
-      username: event.target.value
-    })
-  }
+  const handleChange = (e) => setUserName(e.target.value)
+  const theme = React.useContext(ThemeContext)
 
-  render() {
-    return (
-      <ThemeConsumer>
-        { (theme) => (
-          <form className='column player' onSubmit={this.handleSubmit}>
-            <label htmlFor='username' className='player-label'>
-              {this.props.label}
-            </label>
-            <div className='row player-inputs'>
-              <input
-                type='text'
-                id='username'
-                className={`input-${theme}`}
-                placeholder='github username'
-                autoComplete='off'
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-              <button
-                className={`btn ${theme === 'dark' ? 'light-btn' : 'dark-btn'}`}
-                type='submit'
-                disabled={!this.state.username}
-              >
-                Submit
-          </button>
-            </div>
-          </form>
-        )}
-      </ThemeConsumer>
+  return (
+    <form className='column player' onSubmit={handleSubmit}>
+      <label htmlFor='username' className='player-label'>
+        {label}
+      </label>
+      <div className='row player-inputs'>
+        <input
+          type='text'
+          id='username'
+          className={`input-${theme}`}
+          placeholder='github username'
+          autoComplete='off'
+          value={username}
+          onChange={handleChange}
+        />
+        <button
+          className={`btn ${theme === 'dark' ? 'light-btn' : 'dark-btn'}`}
+          type='submit'
+          disabled={!username}
+        >
+          Submit
+        </button>
+      </div>
+    </form>
 
-    )
-  }
+  )
 }
 
 function PlayerPreview({ username, onReset, label }) {
+  const theme = React.useContext(ThemeContext)
   return (
-    <ThemeConsumer>
-      {(theme) => (
-        <div className='column player'>
-          <h3 className='player-label'>{label}</h3>
-          <div className={`row bg-${theme}`}>
-            <div className='player-info'>
-              <img
-                className='avatar-small'
-                src={`https://github.com/${username}.png?size=200`}
-                alt={`Avatar for ${username}`}
-              />
-              <a
-                href={`https://github.com/${username}`}
-                className='link'>
-                {username}
-              </a>
-            </div>
-            <button className='btn-clear flex-center' onClick={onReset}>
-              <FaTimesCircle color='rgb(194, 57, 42)' size={26} />
-            </button>
-          </div>
+    <div className='column player'>
+      <h3 className='player-label'>{label}</h3>
+      <div className={`row bg-${theme}`}>
+        <div className='player-info'>
+          <img
+            className='avatar-small'
+            src={`https://github.com/${username}.png?size=200`}
+            alt={`Avatar for ${username}`}
+          />
+          <a
+            href={`https://github.com/${username}`}
+            className='link'>
+            {username}
+          </a>
         </div>
-      )}
-    </ThemeConsumer>
-
+        <button className='btn-clear flex-center' onClick={onReset}>
+          <FaTimesCircle color='rgb(194, 57, 42)' size={26} />
+        </button>
+      </div>
+    </div>
   )
 
 }
@@ -132,18 +116,17 @@ export default function Battle() {
   const [playerOne, setPlayerOne] = React.useState(null)
   const [playerTwo, setPlayerTwo] = React.useState(null)
 
-  const handleSubmit = (id, player) => id === "playerOne" 
-  ? setPlayerOne(player)
-  : setPlayerTwo(player)
+  const handleSubmit = (id, player) => id === "playerOne"
+    ? setPlayerOne(player)
+    : setPlayerTwo(player)
 
   const handleReset = (id) => id === "playerOne"
-  ? setPlayerOne(null)
-  : setPlayerTwo(null)
+    ? setPlayerOne(null)
+    : setPlayerTwo(null)
 
   return (
     <React.Fragment>
       <Instructions />
-
       <div className='players-container'>
         <h1 className='center-text header-lg'>Players</h1>
         <div className='row space-around'>
